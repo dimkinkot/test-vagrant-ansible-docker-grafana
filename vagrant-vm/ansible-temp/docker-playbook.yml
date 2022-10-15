@@ -1,0 +1,68 @@
+---
+- hosts: local
+  become: yes
+  gather_facts: false
+ 
+  tasks:
+  - name: Add Docker key
+    remote_user: vagrant
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
+    tags:
+      - docker   
+        
+  - name: Verify Docker key
+    remote_user: vagrant
+    apt_key:
+      id: 0EBFCD88
+      state: present
+    tags:
+      - docker
+        
+  - name: Add Docker repository
+    remote_user: vagrant
+    apt_repository:
+      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+      state: present
+      update_cache: yes
+    tags:
+      - docker
+      
+  - name: Update packages
+    remote_user: vagrant
+    apt:
+      update_cache: yes
+    tags:
+      - docker
+      
+  - name: Install engine docker-ce
+    remote_user: vagrant
+    apt:
+      name: docker-ce
+      state: present
+      update_cache: yes
+    tags:
+      - docker
+      
+  - name: Add user "vagrant" in group docker
+    remote_user: vagrant
+    user:
+      name: "vagrant"
+      groups: "docker"
+      append: yes
+    tags:
+      - docker
+
+  - name: Install Docker-compose
+    remote_user: vagrant
+    get_url:
+      url: https://github.com/docker/compose/releases/download/v2.11.2/docker-compose-linux-x86_64
+      dest: /usr/local/bin/docker-compose
+      owner: root
+      group: docker
+      mode: u+x,g+x
+    tags:
+      - docker
+      - docker-compose
+...
