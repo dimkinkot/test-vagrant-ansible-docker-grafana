@@ -1,9 +1,8 @@
 # test-vagrant-ansible-docker-grafana_host
 
-# Задача
-## _Тестирование автоматического сценария с помощью Vagrant_
+## Задача: Тестирование автоматического сценария с помощью Vagrant
 
-### Необходимо написать Vagrantfile который по команде vagrant up сделает следующее:
+Необходимо написать Vagrantfile который по команде vagrant up сделает следующее:
 1) Запустит бокс Ubuntu 20.04 (https://app.vagrantup.com/generic/)
 2) Внутри ВМ произойдет автоматическая установка docker и docker compose (используя ansible).
 3) Внутри ВМ произойдет установка node exporter для Prometheus (используя ansible).
@@ -17,4 +16,16 @@
 
 6) Сама ВМ с убунту должна экспозить 3000 порт в хостовую машину
  
-### **_По итогу нужно, что бы после запуска ВМ и выполнения настройки можно было бы открыть в браузере localhost:3000 и обнаружить там Grafana, зайти в нее и увидеть внутри dashboard который визуализирует метрики запущенной ВМ_**
+По итогу нужно, что бы после запуска ВМ и выполнения настройки можно было бы открыть в браузере localhost:3000 и обнаружить там Grafana, зайти в нее и увидеть внутри dashboard который визуализирует метрики запущенной ВМ
+
+---
+### **_Авторизация_**
+- login: "vagrant"
+- password: "vagrant"
+---  
+### **_Порты_**
+HOST (Vagrant VM) - forward list
+>localhost:9000 - portainer - host VM (temp block)
+>localhost:9100 - node exporter - host VM
+>>>localhost:9090 - prometheus - container 1
+>>>localhost:3000 - grafana - container 2
