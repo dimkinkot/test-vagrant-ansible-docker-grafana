@@ -25,7 +25,16 @@
 ---  
 ### **_Порты_**
 HOST (Vagrant VM) - forward list
->localhost:9000 - portainer - host VM (temp block)
->localhost:9100 - node exporter - host VM
->>>localhost:9090 - prometheus - container 1
->>>localhost:3000 - grafana - container 2
+- localhost:9000 - portainer - host VM (temp block)
+- localhost:9100 - node exporter - host VM
+- - localhost:9090 - prometheus - container 1
+- - localhost:3000 - grafana - container 2
+---
+### **_Перед запуском команды "vagrant up"_**
+
+- [Vagrant](https://www.vagrantup.com/) - установить Vagrant для вашей системы
+- - Поместить папку "vagrant-vm" на локальный компьютер
+- - Добавить переменную "vagrant" в системные переменные (для Windows), например   
+  ```sh set PATH=%PATH%;путь_до_папки_с_vagrant\Vagrant\bin```
+- [Virtual Box](https://www.virtualbox.org/) - Установить Virtual Box для вашей системы
+- Запустить команду ```sh vagrant up``` из папки с проектом "vagrant-vm"
