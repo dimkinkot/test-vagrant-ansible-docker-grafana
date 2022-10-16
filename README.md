@@ -26,7 +26,14 @@
 ### **_Авторизация Grafana (default)_**
 - login: ```admin```
 - password: ```admin```
----  
+---
+### **_Сеть_**  
+- Используется сеть 10.0.2.0/24
+- Адрес VM 10.0.2.15
+- Если требуются изменения, то измените настройки:
+  - Vagrantfile - config.vm.network
+  - prometheus.yml - значение "targets", это назначение сбора метрик node_exporter с VM
+---
 ### **_Порты_**
 HOST (Vagrant VM) and forward list 
 - ```2222:22``` - ssh host:vm
