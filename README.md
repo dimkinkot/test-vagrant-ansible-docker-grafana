@@ -51,3 +51,28 @@ HOST (Vagrant VM) and forward list
 - [Virtual Box](https://www.virtualbox.org/) - Установить Virtual Box для вашей системы
 - Запустить команду ```vagrant up``` из папки с проектом "vagrant-vm"
 ---
+### **_Структура вложенности_**
+
+```mermaid
+stateDiagram-v2
+    [user] --> HostPC
+      state HostPC {
+        [*] --> VM_Provider(Vbox)+Vagrant
+        VM_Provider(Vbox)+Vagrant --> Virtual_Machine
+          state Virtual_Machine {
+            [*] --> Node_Exporter
+            [*] --> Docker
+              state Docker {
+                [*] --> Prometheus
+                [*] --> Grafana
+              }
+          }
+      }
+```
+---
+### **_Последовательность связей данных_**
+
+```mermaid
+flowchart TD
+    id1(((HostPC))) <--> id2((VM)) --> Node_Exporter -- Metrics_VM --> Prometheus -- Metrics_Node_Exporter --> Grafana -- Dashboard Statistics --> id1(((HostPC)))
+```    
