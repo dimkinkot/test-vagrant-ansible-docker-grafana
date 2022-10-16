@@ -19,7 +19,7 @@
 По итогу нужно, что бы после запуска ВМ и выполнения настройки можно было бы открыть в браузере localhost:3000 и обнаружить там Grafana, зайти в нее и увидеть внутри dashboard который визуализирует метрики запущенной ВМ
 
 ---
-### **_Авторизация VM_**
+### **_Авторизация VM Vagrant_**
 - login: "vagrant"
 - password: "vagrant"
 ---
@@ -28,17 +28,26 @@
 - password: "admin"
 ---  
 ### **_Порты_**
-HOST (Vagrant VM) - forward list
-- localhost:9000 - portainer - host VM (temp block)
-- localhost:9100 - node exporter - host VM
-- - localhost:9090 - prometheus - container 1
-- - localhost:3000 - grafana - container 2
+HOST (Vagrant VM) and forward list 
+- 2222:22 - ssh host:vm
+- - 9000:9000 - portainer - host VM (temp block)
+- - 9100:9100 - node exporter - host VM
+- - - 9090:9090 - prometheus - container 1
+- - - 3000:3000 - grafana - container 2
+---
+### **_Доступно на хостовой машине, с которой запускается Vagrant_**
+- ``` ssh -p 2222 vagrant@127.0.0.1``` - доступ через SSH 
+- - http://localhost:9000 - portainer - host VM (temp block)
+- - http://localhost:9100 - node exporter - host VM
+- - - http://localhost:9090 - prometheus - container 1
+- - - http://localhost:3000 - grafana - container 2
 ---
 ### **_Перед запуском команды "vagrant up"_**
 
 - [Vagrant](https://www.vagrantup.com/) - установить Vagrant для вашей системы
 - - Поместить папку "vagrant-vm" на локальный компьютер
 - - Добавить переменную "vagrant" в системные переменные (для Windows), например   
-  ```sh set PATH=%PATH%;путь_до_папки_с_vagrant\Vagrant\bin```
+  ```set PATH=%PATH%;путь_до_папки_с_vagrant\Vagrant\bin```
 - [Virtual Box](https://www.virtualbox.org/) - Установить Virtual Box для вашей системы
-- Запустить команду ```sh vagrant up``` из папки с проектом "vagrant-vm"
+- Запустить команду ```vagrant up``` из папки с проектом "vagrant-vm"
+---
