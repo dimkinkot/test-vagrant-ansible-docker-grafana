@@ -28,18 +28,13 @@
 - password: ```admin```
 ---  
 ### **_Порты_**
-HOST (Vagrant VM) and forward list 
 - ```2222:22``` - ssh host:vm
-- - ```9000:9000``` - portainer - host VM (temp block)
-- - ```9100:9100``` - node exporter - host VM
-- - - ```9090:9090``` - prometheus - container 1
-- - - ```3000:3000``` - grafana - container 2
+- - ```9100``` - node exporter - host VM
+- - - ```9090``` - prometheus - container 1
+- - - ```3000:3000``` - grafana - container 2 host:vm
 ---
 ### **_Доступно на хостовой машине, с которой запускается Vagrant_**
 - ``` ssh -p 2222 vagrant@127.0.0.1``` - доступ через SSH 
-- - ```http://localhost:9000``` - portainer - host VM (temp block)
-- - ```http://localhost:9100``` - node exporter - host VM
-- - - ```http://localhost:9090``` - prometheus - container 1
 - - - ```http://localhost:3000``` - grafana - container 2
 ---
 ### **_Перед запуском команды "vagrant up"_**

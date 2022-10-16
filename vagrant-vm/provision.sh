@@ -16,11 +16,6 @@ echo 'Activation playbook - node exporter'
 ansible-playbook ./ansible-temp/node-exporter-playbook.yml
 echo 'Activation playbook - docker'
 ansible-playbook ./ansible-temp/docker-playbook.yml
-#echo 'docker add macvlan 10.0.2.0/24'
-#docker network create -d macvlan --subnet=10.0.2.0/24 --gateway=10.0.2.1  -o parent=eth0 pub_net10
 echo 'docker-compose up prometheus & grafana'
 docker-compose -f /home/vagrant/docker-temp/docker-compose.yml up -d
-apt install portainer
-docker volume create portainer_data
-docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
 exit 0
