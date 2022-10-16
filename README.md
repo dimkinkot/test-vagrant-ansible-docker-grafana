@@ -57,12 +57,12 @@ HOST (Vagrant VM) and forward list
 stateDiagram-v2
     [user] --> HostPC
       state HostPC {
-        [*] --> VM_Provider(Vbox)+Vagrant
-        VM_Provider(Vbox)+Vagrant --> Virtual_Machine
+        [*] --> VM_Provider(Vbox)+Vagrant+Ansible
+        VM_Provider(Vbox)+Vagrant+Ansible --> Virtual_Machine
           state Virtual_Machine {
             [*] --> Node_Exporter
-            [*] --> Docker
-              state Docker {
+            [*] --> Docker+Docker_Compose
+              state Docker+Docker_Compose {
                 [*] --> Prometheus
                 [*] --> Grafana
               }
