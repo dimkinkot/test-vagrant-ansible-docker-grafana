@@ -1,0 +1,20 @@
+---
+- hosts: local
+  become: yes
+  become_method: sudo
+  
+  tasks:
+  - name: Package installation
+    apt:
+      name:
+        - mc
+        - net-tools
+        - nmap
+        - curl
+        - wget
+        - apt-transport-https
+        - ca-certificates
+        - software-properties-common
+      state: latest
+    tags:
+      - package
