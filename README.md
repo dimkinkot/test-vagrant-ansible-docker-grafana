@@ -45,13 +45,13 @@
 - - - ```http://localhost:3000``` - grafana - container 2
 ---
 ### **_Перед запуском команды "vagrant up"_**
-
 - [Vagrant](https://www.vagrantup.com/) - установить Vagrant для вашей системы
-- - Поместить папку "vagrant-vm" на локальный компьютер
+- - Поместить папку "vagrant-vm" из репозитория на локальный компьютер или клонировать репозиторий командой
 - - Добавить переменную "vagrant" в системные переменные (для Windows), например   
   ```set PATH=%PATH%;путь_до_папки_с_vagrant\Vagrant\bin```
 - [Virtual Box](https://www.virtualbox.org/) - Установить Virtual Box для вашей системы
-- Запустить команду ```vagrant up``` из папки с проектом "vagrant-vm"
+- Запустить команду ```vagrant up``` из папки с проектом "vagrant-vm":  
+ ```user@machine:/userfiles/clone-repo/test-vagrant-ansible-docker-grafana/vagrant-vm$ vagrant up```
 ---
 ### **_Структура вложенности_**
 
